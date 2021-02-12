@@ -2,6 +2,9 @@
 
 ## Description
 
+Instead of having one classifier that is trained among four classe, we divide the task into 2 decision levels. 
+This results in 3 classifiers that are trained to classifiy a more specific task.
+
 ## Dataset Generator - Creation of 2D points
 
 To create the dataset 2D points, we used a Gaussian Distribution for each class:
@@ -13,13 +16,19 @@ Class | Mean (x, y) | Covariance Matrix ((c11, c12),(c21, c22))
 **3: down-right** | (5.42, -5.55) | ((3.06, 3.16), (3.96, 4.28))
 **4: down-left** | (-5.44, -4.75) | ((3.45, 3.60), (3.58, 3.55))
 
-![Dataset](/Pictures/dataset.png)
+<img src="/Pictures/dataset.png" width="420">
 
 ## Training Stage
 
+Classifier | Training Set
+---------- | ------------
+(a) | every point generated (classes **top-left**, **top-right**, **down-left**, **down-right**)
+(b) | every top-point (classes **top-left**, **top-right**)
+(c) | every down-point (classes **down-left**, **down-right**)
 ## Inference Stage
 
-![Inference Stage](/Pictures/inference_stage.png)
+<img src="/Pictures/inference_stage.png" width="720">
+
 
 ### Level 1 of Decision
 * The first classifier **(a)** predicts if a point belongs to the **top**, or to the **down** class.
